@@ -1,0 +1,24 @@
+PACIFIC TOURS CANADA — DELIVERY MANIFEST
+
+  app/Enums               16    app/Models              49
+  app/Services            18    app/Repositories        12
+  app/Http/Controllers    62    app/Http/Requests       10
+  app/Http/Resources      12    app/Http/Middleware      5
+  app/Policies             5    app/Observers            4
+  app/Events               6    app/Listeners            5
+  app/Notifications        8    app/Jobs                 7
+  app/Providers            5    app/Traits               6
+  app/DTOs                 5    app/Exports              1
+  database/migrations     15    database/seeders         8
+  database/factories       7    routes                   6
+  tests                   12    resources/views        101
+  lang (en + fr)           7    docs                     7
+  .github/workflows        1
+
+  422 files total · 401 PHP files · 101 Blade views
+
+NOT INCLUDED: vendor/, node_modules/, and the stock Laravel skeleton.
+The build sandbox could not reach Packagist. See README.md → "Read this first"
+for the two-step setup (laravel new, then copy this over it).
+
+START HERE: README.md, then docs/ARCHITECTURE.md

@@ -1,0 +1,414 @@
+// PUBLIC THEME — PLACEHOLDER
+// Deliberately minimal Bootstrap. Replaced wholesale by the Figma design; keep
+// the class hooks used in resources/views/web if you want a gradual migration.
+
+@import 'bootstrap/scss/bootstrap';
+
+.site { display: flex; min-height: 100vh; flex-direction: column; }
+#main { flex: 1; }
+
+.auth-logo { width: min(260px, 82vw); height: auto; }
+
+.wizard-steps li { padding: .5rem .75rem; border-bottom: 3px solid #dee2e6; }
+.wizard-steps li.is-current { border-bottom-color: var(--bs-primary); font-weight: 600; }
+.wizard-steps li.is-done { border-bottom-color: var(--bs-success); }
+
+[x-cloak] { display: none !important; }
+
+// =============================================================================
+// PACIFIC TOURS — CLIENT-APPROVED VANCOUVER HOMEPAGE (2026-08-14)
+// -----------------------------------------------------------------------------
+// Colour + typography tokens driven from the design mockup.
+// =============================================================================
+
+:root {
+    --pt-navy:    #061420;
+    --pt-navy-2:  #0e2536;
+    --pt-orange:  #ff8a20;
+    --pt-orange-2:#ff9a3a;
+    --pt-cream:   #fff2e0;
+    --pt-ink:     #1c2632;
+    --pt-muted:   #7d8a99;
+}
+
+body.site { font-family: 'Inter', 'Segoe UI', system-ui, sans-serif; color: var(--pt-ink); }
+body.site .text-accent { color: var(--pt-orange); }
+
+// Reusable pill button ---------------------------------------------------------
+.btn-pill {
+    display: inline-flex; align-items: center; gap: .5rem;
+    padding: .65rem 1.35rem; border-radius: 999px;
+    font-weight: 600; font-size: .95rem; text-decoration: none;
+    border: 1px solid transparent; transition: background .15s, transform .15s;
+    &:hover { transform: translateY(-1px); }
+
+    &--primary { background: var(--pt-orange); color: #fff; }
+    &--primary:hover { background: var(--pt-orange-2); color: #fff; }
+    &--ghost { background: rgba(255,255,255,.08); color: #fff; border-color: rgba(255,255,255,.4); }
+    &--ghost:hover { background: rgba(255,255,255,.14); color: #fff; }
+    &--white { background: #fff; color: var(--pt-navy); }
+    &--white:hover { background: var(--pt-cream); color: var(--pt-navy); }
+}
+
+// 1. HERO ---------------------------------------------------------------------
+.pt-hero {
+    background: #1a2b3d center/cover no-repeat;
+    color: #fff; padding: 6rem 0 4rem; position: relative;
+
+    &__inner { max-width: 640px; }
+    &__title {
+        font-size: clamp(2rem, 5vw, 3.4rem); font-weight: 700;
+        line-height: 1.1; margin-bottom: 1rem;
+    }
+    &__sub { font-size: 1rem; opacity: .9; margin-bottom: 1.75rem; }
+    &__cta { display: flex; gap: .75rem; margin-bottom: 2rem; flex-wrap: wrap; }
+    &__account {
+        display: inline-flex; align-items: center; gap: 1rem;
+        background: rgba(255,255,255,.95); color: var(--pt-ink);
+        padding: .55rem 1rem; border-radius: 999px; font-size: .85rem;
+        a { color: var(--pt-orange); text-decoration: none; font-weight: 600; }
+    }
+    &__account-cta {
+        display: inline-flex; align-items: center; gap: .4rem;
+        color: var(--pt-orange) !important; font-weight: 600;
+    }
+}
+
+// 2. QUOTE BAND ---------------------------------------------------------------
+.pt-quote {
+    background: var(--pt-navy); color: #fff;
+    padding: 3rem 0 4rem; position: relative;
+
+    &__lead { text-align: center; font-size: 1.05rem; font-weight: 500; max-width: 780px; margin: 0 auto 1.5rem; }
+    &__tab {
+        display: flex; justify-content: center; margin-bottom: -1.4rem; position: relative; z-index: 2;
+        a {
+            background: var(--pt-orange); color: #fff; padding: .55rem 1.9rem;
+            border-radius: 999px; font-weight: 600; text-decoration: none;
+        }
+    }
+    &__form {
+        background: #fff; border-radius: 999px; padding: .55rem;
+        display: grid; grid-template-columns: 2fr 2fr 2.5fr auto; gap: .5rem;
+        max-width: 1100px; margin: 0 auto; box-shadow: 0 30px 60px rgba(0,0,0,.35);
+
+        @media (max-width: 900px) {
+            grid-template-columns: 1fr; border-radius: 22px;
+        }
+    }
+    &__field {
+        display: flex; flex-direction: column; padding: .3rem 1rem;
+        border-right: 1px solid #eef2f7;
+        &:last-of-type { border-right: 0; }
+        @media (max-width: 900px) { border-right: 0; border-bottom: 1px solid #eef2f7; }
+    }
+    &__label { font-size: .72rem; color: var(--pt-muted); font-weight: 600; text-transform: none; }
+    &__field input, &__field select {
+        border: 0; padding: .1rem 0; background: transparent; font-size: .95rem;
+        color: var(--pt-ink); outline: none; width: 100%;
+    }
+    &__submit { justify-self: end; margin: .1rem; padding: .8rem 1.4rem; white-space: nowrap; }
+}
+
+// 3. INTRO --------------------------------------------------------------------
+.pt-section {
+    padding: 3rem 0 1.5rem;
+    &--intro { padding-bottom: .5rem; }
+    &__title { font-weight: 700; color: var(--pt-ink); margin-bottom: .35rem; }
+    &__underline {
+        display: inline-block; width: 60px; height: 3px; border-radius: 3px;
+        background: var(--pt-orange); margin-top: .35rem;
+    }
+}
+
+// 4. DESTINATIONS -------------------------------------------------------------
+.pt-destinations {
+    background: #f1f4f8; padding: 3rem 0 6rem; position: relative; overflow: hidden;
+
+    &__heading { font-weight: 700; margin-bottom: .75rem; font-size: 1.5rem; }
+    &__intro { color: var(--pt-muted); margin-bottom: 1.25rem; font-size: .95rem; line-height: 1.6; }
+    // Van image sized to match the mockup — bigger and hugs the bottom-left corner.
+    &__van { position: absolute; bottom: 0; left: -60px; width: 560px; max-width: 48vw; opacity: 1; }
+    // Staggered grid: right column offset down so the four cards overlap into
+    // the masonry look shown in the client-approved design.
+    &__grid {
+        display: grid; grid-template-columns: 1fr 1fr; gap: 1rem 1.25rem;
+        > *:nth-child(2n) { margin-top: 3.5rem; }
+        @media (max-width: 700px) {
+            grid-template-columns: 1fr;
+            > *:nth-child(2n) { margin-top: 0; }
+        }
+    }
+}
+.pt-dest-card {
+    display: block; background: #fff; border-radius: 14px; overflow: hidden;
+    color: var(--pt-ink); text-decoration: none;
+    box-shadow: 0 4px 18px rgba(15, 33, 55, .06);
+    transition: transform .18s, box-shadow .18s;
+    &:hover { transform: translateY(-2px); box-shadow: 0 12px 30px rgba(15, 33, 55, .12); color: var(--pt-ink); }
+
+    img { width: 100%; height: 150px; object-fit: cover; display: block; }
+    &__body { padding: .85rem 1rem 1rem; }
+    &__title { font-size: 1rem; font-weight: 700; margin: 0 0 .25rem; }
+    &__meta { color: var(--pt-muted); font-size: .78rem; margin: 0 0 .4rem; }
+    &__price { display: block; color: var(--pt-orange); font-weight: 700; font-size: .95rem; }
+    &__foot { display: flex; justify-content: space-between; align-items: center; margin-top: .55rem;
+              padding-top: .55rem; border-top: 1px solid #eef2f7; font-size: .78rem; }
+    &__hours { color: var(--pt-muted); display: inline-flex; align-items: center; gap: .3rem; }
+    &__more { color: var(--pt-orange); font-weight: 600; display: inline-flex; align-items: center; gap: .2rem; }
+}
+
+// 5. FEATURED -----------------------------------------------------------------
+.pt-featured {
+    padding: 3.5rem 0; background: #fff;
+
+    &__head { display: flex; justify-content: space-between; align-items: flex-end; gap: 2rem; margin-bottom: 1.5rem; flex-wrap: wrap; }
+    &__heading { font-weight: 700; font-size: 1.35rem; margin: 0 0 .35rem; }
+    &__intro { color: var(--pt-muted); font-size: .92rem; max-width: 720px; margin: 0; line-height: 1.55; }
+
+    &__carousel { position: relative; padding: 0 2.5rem; }
+    &__track {
+        display: grid; grid-auto-flow: column; grid-auto-columns: minmax(240px, 1fr);
+        gap: 1rem; overflow-x: auto; scroll-behavior: smooth;
+        scrollbar-width: none;
+        &::-webkit-scrollbar { display: none; }
+    }
+    &__arrow {
+        position: absolute; top: 50%; transform: translateY(-50%);
+        width: 42px; height: 42px; border-radius: 50%;
+        background: #e8ecf1; border: 0; color: var(--pt-ink);
+        display: inline-flex; align-items: center; justify-content: center;
+        z-index: 2; cursor: pointer;
+        &--prev { left: 0; } &--next { right: 0; }
+        &:hover { background: var(--pt-orange); color: #fff; }
+    }
+}
+.pt-tour-card {
+    display: block; background: #fff; border-radius: 14px; overflow: hidden;
+    text-decoration: none; color: #fff; position: relative; min-height: 240px;
+    box-shadow: 0 6px 18px rgba(15, 33, 55, .08);
+    transition: transform .18s;
+    &:hover { transform: translateY(-2px); color: #fff; }
+
+    img { width: 100%; height: 100%; min-height: 240px; object-fit: cover; position: absolute; inset: 0; }
+    &__body {
+        position: relative; z-index: 1; padding: 1rem;
+        display: flex; flex-direction: column; justify-content: flex-end;
+        height: 100%; min-height: 240px;
+        background: linear-gradient(180deg, rgba(0,0,0,0) 40%, rgba(0,0,0,.75) 100%);
+    }
+    &__body h4 { font-size: 1rem; font-weight: 700; margin: 0 0 .25rem; line-height: 1.25; }
+    &__price { color: var(--pt-orange); font-weight: 700; font-size: .85rem; margin: 0 0 .4rem; }
+    &__foot { display: flex; justify-content: space-between; align-items: center;
+              padding-top: .5rem; border-top: 1px solid rgba(255,255,255,.25); font-size: .78rem; }
+    &__cta { display: inline-flex; align-items: center; gap: .25rem; color: var(--pt-orange); font-weight: 600; }
+}
+
+// 6. WHY ----------------------------------------------------------------------
+.pt-why {
+    padding: 3.5rem 0; background: #f1f4f8;
+    &__intro { color: var(--pt-muted); max-width: 780px; margin: .5rem auto 0; }
+}
+.pt-why-tile {
+    display: flex; align-items: flex-start; gap: 1rem; padding: 1rem;
+    background: transparent;
+
+    &__icon {
+        flex-shrink: 0; width: 44px; height: 44px; border-radius: 50%;
+        background: var(--pt-orange); color: #fff;
+        display: inline-flex; align-items: center; justify-content: center;
+    }
+    &__title { font-size: 1rem; font-weight: 700; margin: .25rem 0 .35rem; }
+    &__desc  { font-size: .85rem; color: var(--pt-muted); margin: 0; line-height: 1.55; }
+}
+
+// 7. TESTIMONIALS -------------------------------------------------------------
+.pt-testimonials {
+    padding: 5rem 0 6rem; background: #f5f5f7; text-align: center; overflow: hidden;
+
+    &__head { margin-bottom: 3rem; }
+    &__eyebrow {
+        display: inline-block; width: 40px; height: 3px; border-radius: 2px;
+        background: var(--pt-navy); margin: 0 auto 1.2rem;
+    }
+    &__title { font-size: 2.2rem; font-weight: 700; color: var(--pt-ink); margin: 0 0 1rem; }
+    &__intro { color: var(--pt-muted); max-width: 620px; margin: 0 auto; font-size: .95rem; line-height: 1.6; }
+
+    /* Stage: cards absolutely positioned, x-clipped so the left/right cards
+       cut off at the edges. y-overflow visible so the peek card can poke
+       out above the front card. */
+    &__carousel { position: relative; max-width: 1100px; margin: 0 auto; }
+    &__stage {
+        position: relative; height: 340px;
+        overflow-x: hidden; overflow-y: visible;
+        padding: 20px 0 40px;
+    }
+
+    &__controls {
+        display: flex; justify-content: center; align-items: center;
+        gap: 1.4rem; margin-top: .5rem;
+    }
+    &__arrow {
+        width: 44px; height: 44px; border-radius: 50%;
+        border: 1px solid #e3e6ec; background: #fff; color: var(--pt-navy);
+        display: inline-flex; align-items: center; justify-content: center;
+        cursor: pointer; transition: background .2s, color .2s, transform .15s;
+        &:hover { background: var(--pt-navy); color: #fff; transform: translateY(-2px); }
+    }
+    &__dots { display: flex; gap: 8px; }
+    &__dot {
+        width: 8px; height: 8px; border-radius: 50%;
+        background: #d9dde4; border: 0; padding: 0; cursor: pointer;
+        transition: all .25s ease;
+        &.is-active { background: var(--pt-orange); width: 22px; border-radius: 5px; }
+    }
+}
+
+/* Individual story card — role classes set the transform for each slot. */
+.pt-story-card {
+    position: absolute; top: 50%; left: 50%;
+    width: 340px; padding: 2rem 1.75rem;
+    background: #fff; border-radius: 14px; text-align: left;
+    box-shadow: 0 4px 18px rgba(20,30,60,.08);
+    cursor: pointer; opacity: 0; z-index: 1; pointer-events: none;
+    /* base centering; role modifiers append additional translate + scale */
+    transform: translate(-50%, -50%);
+    transition: transform .55s cubic-bezier(.4,0,.2,1), opacity .55s, box-shadow .55s;
+
+    &.is-front {
+        transform: translate(-50%, -50%) scale(1);
+        opacity: 1; z-index: 5;
+        box-shadow: 0 22px 48px rgba(20,30,60,.20);
+        pointer-events: auto; cursor: default;
+    }
+    &.is-peek {
+        transform: translate(-50%, -50%) translate(150px, -92px) scale(.82);
+        opacity: .75; z-index: 4; pointer-events: auto;
+    }
+    &.is-left {
+        transform: translate(-50%, -50%) translate(-430px, 26px) scale(.82);
+        opacity: .55; z-index: 2; pointer-events: auto;
+    }
+    &.is-right {
+        transform: translate(-50%, -50%) translate(430px, 42px) scale(.82);
+        opacity: .45; z-index: 1; pointer-events: auto;
+    }
+    &.is-hidden {
+        transform: translate(-50%, -50%) scale(.6);
+        opacity: 0; z-index: 0;
+    }
+
+    &__head { display: flex; align-items: center; gap: .9rem; margin-bottom: .9rem; }
+    &__avatar {
+        width: 56px; height: 56px; border-radius: 50%; object-fit: cover;
+        flex-shrink: 0; background: #d9e3f0;
+    }
+    &__name { font-size: 1.05rem; font-weight: 700; color: var(--pt-navy); margin: 0 0 .25rem; }
+    &__stars { color: var(--pt-orange); font-size: .85rem; letter-spacing: 2px; }
+    &__body {
+        color: var(--pt-muted); font-size: .92rem; line-height: 1.65; margin: 0;
+        display: -webkit-box; -webkit-line-clamp: 4; -webkit-box-orient: vertical; overflow: hidden;
+    }
+}
+
+/* Mobile: give up the carousel — stack the front card only, since the peek
+   and side cards would fall off a narrow viewport. */
+@media (max-width: 640px) {
+    .pt-testimonials__stage { height: auto; padding: 0; }
+    .pt-story-card {
+        position: static; width: 100%; opacity: 1; pointer-events: auto;
+        transform: none !important; margin-bottom: 1rem;
+        &.is-hidden, &.is-left, &.is-right, &.is-peek { display: none; }
+    }
+}
+
+// 8. FLEET BAND ---------------------------------------------------------------
+.pt-fleet {
+    padding: 4rem 0; color: #fff;
+    background: var(--pt-navy) center/cover no-repeat;
+
+    &__heading { font-weight: 700; font-size: 1.4rem; margin-bottom: 1rem; }
+    &__list { font-size: .95rem; opacity: .9; margin-bottom: 1.5rem; }
+    &__dot  { color: var(--pt-orange); margin: 0 .35rem; }
+    &__cta  { display: inline-flex; gap: .75rem; flex-wrap: wrap; justify-content: center; }
+}
+
+// 9. CONTACT + MAP ------------------------------------------------------------
+.pt-contact {
+    &__grid { display: grid; grid-template-columns: 1fr 1fr;
+              @media (max-width: 900px) { grid-template-columns: 1fr; } }
+    &__form {
+        background: var(--pt-orange); color: #fff; padding: 3rem 2.5rem;
+        h3 { font-weight: 700; margin-bottom: .5rem; }
+        p  { font-size: .9rem; opacity: .95; margin-bottom: 1.5rem; }
+    }
+    &__fields input, &__fields select, &__fields textarea {
+        width: 100%; padding: .7rem 1rem; border: 0; border-radius: 10px;
+        background: var(--pt-cream); color: var(--pt-ink); font-size: .9rem;
+        margin-bottom: .5rem; outline: none;
+        &::placeholder { color: rgba(28,38,50,.55); }
+    }
+    &__submit {
+        width: 100%; padding: .8rem; border: 0; border-radius: 10px;
+        background: #fff; color: var(--pt-orange); font-weight: 700; font-size: .95rem;
+        margin-top: .5rem; cursor: pointer;
+        &:hover { background: var(--pt-cream); }
+    }
+    &__map iframe { width: 100%; height: 100%; min-height: 480px; border: 0; display: block; }
+}
+
+// HEADER ----------------------------------------------------------------------
+.pt-header {
+    background: transparent; position: absolute; top: 0; left: 0; right: 0;
+    z-index: 10; padding: 1rem 0;
+
+    &__inner { display: flex; align-items: center; gap: 1.5rem; }
+    &__brand { display: inline-flex; align-items: center; gap: .5rem; color: #fff; text-decoration: none; font-weight: 700; }
+    &__brand img { height: 34px; }
+    &__brand-fallback { display: inline-flex; align-items: center; gap: .4rem; color: #fff; }
+    &__nav { display: flex; gap: 1.5rem; margin-left: auto; }
+    &__nav a { color: #fff; text-decoration: none; font-size: .95rem; opacity: .9; }
+    &__nav a:hover, &__nav a.is-active { color: var(--pt-orange); opacity: 1; }
+    &__actions { display: inline-flex; align-items: center; gap: .5rem; margin-left: 1rem; }
+    &__icon { color: #fff; opacity: .85; display: inline-flex; align-items: center; padding: .25rem;
+              &:hover { opacity: 1; color: var(--pt-orange); } }
+    &__cta { padding: .5rem 1.2rem; }
+}
+// Hero and header live in one visual — remove top-padding on hero when header is absolute.
+.site .pt-hero { padding-top: 8rem; }
+
+// FOOTER ----------------------------------------------------------------------
+.pt-footer {
+    background: var(--pt-navy); color: #a4b4c4; padding: 4rem 0 1.5rem;
+
+    &__row { border-bottom: 1px solid rgba(255,255,255,.08); padding-bottom: 2rem; }
+    &__brand { display: inline-flex; align-items: center; gap: .5rem; color: #fff; text-decoration: none;
+               font-weight: 700; font-size: 1.3rem; margin-bottom: 1rem; }
+    &__blurb { font-size: .82rem; line-height: 1.6; color: #94a4b4; margin-bottom: 1rem; }
+    &__social { display: inline-flex; gap: .5rem; }
+    &__social a {
+        width: 28px; height: 28px; display: inline-flex; align-items: center; justify-content: center;
+        background: var(--pt-orange); color: #fff; border-radius: 6px; text-decoration: none;
+        &:hover { background: var(--pt-orange-2); }
+    }
+    &__heading { color: #fff; font-size: 1rem; font-weight: 700; margin-bottom: 1rem; }
+    &__list, &__contact { list-style: none; padding: 0; margin: 0;
+                          li { padding: .2rem 0; font-size: .85rem; }
+                          a  { color: #a4b4c4; text-decoration: none;
+                               &:hover { color: var(--pt-orange); } } }
+    &__contact li { display: flex; align-items: flex-start; gap: .5rem; margin-bottom: .5rem;
+                    line-height: 1.5;
+                    svg { flex-shrink: 0; margin-top: 2px; color: var(--pt-orange); } }
+    &__copyright { text-align: center; font-size: .8rem; color: #6a7a8a; margin: 1.5rem 0 0; }
+}
+
+// Logo sizing for the new header + footer -----------------------------------
+.pt-header__brand img { height: 38px; width: auto; }
+.pt-footer__logo      { height: 46px; width: auto; }
+// Section titles that use text-accent should read as orange, no matter which
+// class ordering is used in the HTML.
+.pt-section__title.text-accent { color: var(--pt-orange); }
+
+// Header logo: many client logos are dark blue-on-white. On the transparent
+// header over the dark hero, that would disappear. Force white for legibility.
+.pt-header__brand img { filter: brightness(0) invert(1); }

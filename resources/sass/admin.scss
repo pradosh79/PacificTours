@@ -1,0 +1,97 @@
+// Pacific Tours admin theme
+// Palette drawn from the coast the company actually sells: cedar ink, glacier
+// blue, driftwood. Restrained on purpose — this is a tool people use all day.
+
+$ink:        #10222b;
+$ink-soft:   #1b3641;
+$glacier:    #2f7d95;
+$glacier-lt: #e6f1f4;
+$sand:       #f7f5f1;
+$line:       #e3e0da;
+
+$primary: $glacier;
+$body-bg: $sand;
+$body-color: #23282b;
+$border-radius: .5rem;
+
+@import 'bootstrap/scss/bootstrap';
+
+.admin-shell { display: flex; min-height: 100vh; }
+
+.admin-sidebar {
+    width: 250px; flex: 0 0 250px; background: $ink; color: rgba(#fff, .82);
+    display: flex; flex-direction: column; position: sticky; top: 0; height: 100vh;
+
+    .sidebar-brand {
+        display: flex; align-items: center; padding: 1rem;
+        color: #fff; text-decoration: none; font-weight: 600;
+        border-bottom: 1px solid rgba(#fff, .08);
+    }
+
+    .sidebar-brand-logo {
+        display: flex; align-items: center; justify-content: center;
+        width: 100%; padding: .45rem .65rem; background: #fff;
+        border-radius: $border-radius;
+
+        img { display: block; width: 100%; max-width: 185px; height: auto; }
+    }
+
+    .sidebar-nav { flex: 1; overflow-y: auto; padding: .75rem .5rem; }
+
+    .sidebar-heading {
+        font-size: .68rem; text-transform: uppercase; letter-spacing: .08em;
+        color: rgba(#fff, .38); margin: 1rem .75rem .35rem;
+    }
+
+    .sidebar-link {
+        display: flex; align-items: center; gap: .65rem; padding: .5rem .75rem;
+        border-radius: $border-radius; color: inherit; text-decoration: none; font-size: .9rem;
+
+        &:hover { background: rgba(#fff, .07); color: #fff; }
+        &.is-active { background: $glacier; color: #fff; }
+    }
+
+    .sidebar-footer { padding: .9rem 1rem; border-top: 1px solid rgba(#fff, .08); }
+}
+
+.admin-main { flex: 1; min-width: 0; display: flex; flex-direction: column; }
+
+.admin-topbar {
+    display: flex; align-items: center; gap: 1rem; padding: .65rem 1.25rem;
+    background: #fff; border-bottom: 1px solid $line; position: sticky; top: 0; z-index: 5;
+
+    .topbar-search { flex: 1; max-width: 26rem; }
+    .topbar-actions { margin-left: auto; display: flex; gap: .5rem; align-items: center; }
+}
+
+.admin-content { padding: 1.5rem 1.25rem 3rem; }
+
+.stat-card {
+    background: #fff; border: 1px solid $line; border-radius: $border-radius;
+    padding: 1rem; height: 100%;
+
+    .icon { color: $glacier; margin-bottom: .5rem; }
+    .stat-value { font-size: 1.45rem; font-weight: 650; margin: 0; letter-spacing: -.02em; }
+    .stat-label { font-size: .78rem; color: #6d7679; margin: 0; }
+}
+
+.panel {
+    background: #fff; border: 1px solid $line; border-radius: $border-radius; overflow: hidden;
+
+    .panel-head { padding: .85rem 1rem; border-bottom: 1px solid $line; }
+    .panel-body { padding: 1rem; }
+    .panel-foot { padding: .75rem 1rem; border-top: 1px solid $line; }
+}
+
+.notification-menu { width: 22rem; max-height: 24rem; overflow-y: auto; }
+
+[x-cloak] { display: none !important; }
+
+@media (max-width: 991.98px) {
+    .admin-sidebar { position: fixed; z-index: 20; transform: translateX(-100%); transition: transform .2s; }
+    .admin-sidebar.is-open { transform: none; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    * { transition: none !important; animation: none !important; }
+}

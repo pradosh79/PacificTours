@@ -1,0 +1,15 @@
+includes:
+    - vendor/larastan/larastan/extension.neon
+
+parameters:
+    level: 6
+    phpVersion: 80212
+    paths:
+        - app
+        - database
+        - routes
+    ignoreErrors:
+        - '#Unsafe usage of new static#'
+    checkModelProperties: true
+    excludePaths:
+        - app/Support/helpers.php
