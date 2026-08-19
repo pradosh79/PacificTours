@@ -174,7 +174,7 @@ ul { margin: 0; padding: 0; list-style: none; }
   transform: translate(-50%, -50%) scale(1);
   opacity: 1;
   z-index: 5;
-  box-shadow: 0 22px 48px rgba(20, 30, 60, 0.2);
+  box-shadow: 0 22px 48px rgba(20, 30, 60, 0.2) !important;
   pointer-events: auto;
   cursor: default;
   display: flex;
