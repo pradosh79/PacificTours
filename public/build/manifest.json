@@ -1,0 +1,42 @@
+{
+  "_vendor-JYyL281N.js": {
+    "file": "assets/vendor-JYyL281N.js",
+    "name": "vendor"
+  },
+  "resources/js/admin.js": {
+    "file": "assets/admin-WVem50zL.js",
+    "name": "admin",
+    "src": "resources/js/admin.js",
+    "isEntry": true,
+    "imports": [
+      "_vendor-JYyL281N.js"
+    ]
+  },
+  "resources/js/app.js": {
+    "file": "assets/app-brsr3dBt.js",
+    "name": "app",
+    "src": "resources/js/app.js",
+    "isEntry": true,
+    "imports": [
+      "_vendor-JYyL281N.js"
+    ]
+  },
+  "resources/sass/admin.scss": {
+    "file": "assets/admin-CI1gVjM9.css",
+    "src": "resources/sass/admin.scss",
+    "isEntry": true,
+    "name": "admin",
+    "names": [
+      "admin.css"
+    ]
+  },
+  "resources/sass/app.scss": {
+    "file": "assets/app-Bw4O7vUZ.css",
+    "src": "resources/sass/app.scss",
+    "isEntry": true,
+    "name": "app",
+    "names": [
+      "app.css"
+    ]
+  }
+}
